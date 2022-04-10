@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build Image
-        run: docker build -f API/Home-Tab/Home-Tab/Dockerfile -t orangenal/home-tab:latest API/Home-Tab
+        run: docker build -f Home-Tab/Home-Tab/Dockerfile -t orangenal/home-tab:latest Home-Tab
       -
         name: Push Image
         run: docker push orangenal/home-tab:latest
