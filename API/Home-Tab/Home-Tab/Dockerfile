@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Home-Tab/Home-Tab.csproj", "Home-Tab/"]
+COPY "Home-Tab/Home-Tab.csproj" "Home-Tab/"
 RUN dotnet restore "Home-Tab/Home-Tab.csproj"
 COPY . .
 WORKDIR "/src/Home-Tab"

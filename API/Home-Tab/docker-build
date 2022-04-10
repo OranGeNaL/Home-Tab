@@ -1,0 +1,1 @@
+docker build -t home-tab -f Home-Tab/Dockerfile .
