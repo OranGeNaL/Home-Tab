@@ -61,7 +61,7 @@ jobs:
             cd /home/orangenal/Home-Tab
             git pull
             docker-compose down
-            docker-compose up
+            docker-compose up -d
       
         #name: Connect and start
         #uses: appleboy/ssh-action@master
