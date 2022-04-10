@@ -44,6 +44,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: Create key directory
+        run: mkdir ~/.ssh
+      -
         name: Get Key
         run: echo {{ secrets.KEY }} >> ~/.ssh/id_rsa
       -
