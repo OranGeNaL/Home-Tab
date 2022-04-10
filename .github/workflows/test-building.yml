@@ -8,9 +8,6 @@ on:
   push:
     branches:
       - 'main'
-  pull_request:
-    branches:
-      - 'main'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -47,14 +44,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
-        name: Connect and start
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          script: |
-            cd /home/orangenal/Home-Tab
-            git pull
-            docker-compose up
+        name: Get Key
+        run: echo {{ secrets.KEY }} >> ~/.ssh/id_rsa
+      -
+        name: Connect
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p {{ secrets.PORT }}
+      -
+        name: Enter repo directory
+        run: cd /home/orangenal/Home-Tab
+      -
+        name: Pull repo
+        run: git pull
+      -
+        name: Stop compose
+        run: docker-compose down
+      -
+        name: Start compose
+        run: docker-compose up
+      -
+        name: Disconnect
+        run: exit
+      -
+        name: Clear key
+        run: rm ~/.ssh/id_rsa
+        #name: Connect and start
+        #uses: appleboy/ssh-action@master
+        #with:
+          #host: ${{ secrets.HOST }}
+          #username: ${{ secrets.USERNAME }}
+          #key: ${{ secrets.KEY }}
+          #port: ${{ secrets.PORT }}
+          #script: |
+            #cd /home/orangenal/Home-Tab
+            #git pull
+            #docker-compose up
