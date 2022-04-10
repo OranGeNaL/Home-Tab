@@ -43,6 +43,7 @@ jobs:
         name: Push Image
         run: docker push orangenal/home-tab:latest
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       -
