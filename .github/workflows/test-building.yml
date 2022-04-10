@@ -36,9 +36,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
-        uses: docker/build-push-action@v2
-        with:
-          context: /API/Home-Tab/
-          push: true
-          tags: orangenal/home-tab:latest
+        run: ls
+        #uses: docker/build-push-action@v2
+        #with:
+          #context: /API/Home-Tab/
+          #push: true
+          #tags: orangenal/home-tab:latest
 
