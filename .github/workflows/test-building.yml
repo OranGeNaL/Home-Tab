@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build and push
-        run: ls
+        run: docker build -f API/Home-Tab/Home-Tab/Dockerfile -t orangenal/home-tab:latest .
         #uses: docker/build-push-action@v2
         #with:
           #context: /API/Home-Tab/
