@@ -51,7 +51,7 @@ jobs:
         run: echo {{ secrets.KEY }} >> ~/.ssh/id_rsa
       -
         name: Connect
-        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p {{ secrets.PORT }}
+        run: ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -p ${{ secrets.PORT }}
       -
         name: Enter repo directory
         run: cd /home/orangenal/Home-Tab
